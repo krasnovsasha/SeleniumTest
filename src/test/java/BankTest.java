@@ -45,6 +45,13 @@ public class BankTest {
 		//Нажать на кнопку - Отправить заявку
 		String buttonToSendRequest = "//a[contains(text(),'Отправить заявку')]";
 		driver.findElement(By.xpath(buttonToSendRequest)).click();
+		//Проверить, что открылась страница , на которой присутствует текст
+		// - Заявка на добровольное медицинское страхование
+		String formWithContent = "//div[@class='modal-content']";
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(formWithContent))));
+		actualText = driver.findElement(By.xpath("//h4[@class='modal-title']/b")).getText();
+		Assert.assertEquals("Текст заголовка не соответствует ожидаемому",
+				"Заявка на добровольное медицинское страхование",actualText);
 	}
 
 	@After
