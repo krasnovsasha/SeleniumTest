@@ -88,6 +88,10 @@ public class BankTest {
 				"TestTestTest",driver.findElement(By.name("Comment")).getAttribute("value"));
 		//Нажать Отправить
 		driver.findElement(By.xpath("//div[@class='form-footer']//button[@type='button']")).click();
+		//Проверить, что у Поля - Эл. почта присутствует сообщение об ошибке - Введите корректный email
+		String errorFieldEmail = "//label[contains(text(),'Эл. почта')]/parent::div//span[contains(text(),'Введите адрес электронной почты')]";
+		Assert.assertEquals("Поле 'Email' не содержит сообщение об ошибке",
+							"Введите адрес электронной почты",driver.findElement(By.xpath(errorFieldEmail)).getText());
 	}
 
 	@After
