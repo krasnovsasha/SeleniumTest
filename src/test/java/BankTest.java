@@ -52,6 +52,23 @@ public class BankTest {
 		actualText = driver.findElement(By.xpath("//h4[@class='modal-title']/b")).getText();
 		Assert.assertEquals("Текст заголовка не соответствует ожидаемому",
 				"Заявка на добровольное медицинское страхование",actualText);
+		//Заполнить поля
+		//Имя, Фамилия, Отчество, Регион, Телефон,Эл. почта - qwertyqwerty,
+		//Комментарии, Я согласен на обработку
+		driver.findElement(By.name("LastName")).sendKeys("Иванов");
+		driver.findElement(By.name("FirstName")).sendKeys("Иван");
+		driver.findElement(By.name("MiddleName")).sendKeys("Иванович");
+		driver.findElement(By.name("Region")).click();
+		String fieldRegionToSelect = "//option[contains(text(),'Москва')]";
+		driver.findElement(By.xpath(fieldRegionToSelect)).click();
+		String fieldPhone = "//label[contains(text(),'Телефон')]//following-sibling::input";
+		driver.findElement(By.xpath(fieldPhone)).click();
+		driver.findElement(By.xpath(fieldPhone)).sendKeys("9855678946");
+		driver.findElement(By.name("Email")).sendKeys("qwertyqwerty");
+		driver.findElement(By.name("Comment")).sendKeys("TestTestTest");
+		String inputCheckBox = "//input[@type='checkbox']";
+		driver.findElement(By.xpath(inputCheckBox)).click();
+
 	}
 
 	@After
