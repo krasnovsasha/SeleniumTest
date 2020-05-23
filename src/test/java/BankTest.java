@@ -68,7 +68,24 @@ public class BankTest {
 		driver.findElement(By.name("Comment")).sendKeys("TestTestTest");
 		String inputCheckBox = "//input[@type='checkbox']";
 		driver.findElement(By.xpath(inputCheckBox)).click();
-
+		//Проверить, что все поля заполнены введенными значениями
+		Assert.assertEquals("Поле 'Фамилия' не совпадает",
+							"Иванов",driver.findElement(By.name("LastName")).getAttribute("value"));
+		Assert.assertEquals("Поле 'Имя' не совпадает",
+				"Иван",driver.findElement(By.name("FirstName")).getAttribute("value"));
+		Assert.assertEquals("Поле 'Отчество' не совпадает",
+				"Иванович",driver.findElement(By.name("MiddleName")).getAttribute("value"));
+		Assert.assertEquals("Поле 'Регион' не совпадает",
+				"77",driver.findElement(By.name("Region")).getAttribute("value"));
+		String phoneActual = driver.findElement(By.xpath(fieldPhone)).getAttribute("value");
+		// I changing phone numbers below as I follow info from site that has Inputmask: '+7 (999) 999-99-99'
+		String phoneChanged = phoneActual.replaceAll("\\p{Punct}","");
+		Assert.assertEquals("Поле 'Телефон' не совпадает",
+				"+7 (985) 567-89-46".replaceAll("\\p{Punct}",""),phoneChanged);
+		Assert.assertEquals("Поле 'Email' не совпадает",
+				"qwertyqwerty",driver.findElement(By.name("Email")).getAttribute("value"));
+		Assert.assertEquals("Поле 'Комментарии' не совпадает",
+				"TestTestTest",driver.findElement(By.name("Comment")).getAttribute("value"));
 	}
 
 	@After
