@@ -1,18 +1,17 @@
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.concurrent.TimeUnit;
 
 public class BankTest {
 	private WebDriver driver;
-	private WebDriverWait wait;
+	 WebDriverWait wait;
 	//use this driver for Linux System
 	private final String pathToChromeDriverLinux = "drivers/chromedriver";
 	//use this driver for Windows System
@@ -37,6 +36,12 @@ public class BankTest {
 		//Выбрать категорию - ДМС
 		String linkDMS = "//a[contains(text(),'ДМС')]";
 		driver.findElement(By.xpath(linkDMS)).click();
+		//Проверить наличие заголовка - Добровольное медицинское страхование
+		String h1 = "//h1";
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(h1)));
+		String actualText = driver.findElement(By.xpath(h1)).getText();
+		Assert.assertEquals("Текст заголовка не соответствует ожидаемому",
+				"ДМС — добровольное медицинское страхование",actualText);
 	}
 
 	@After
