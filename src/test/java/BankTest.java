@@ -1,6 +1,7 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -26,7 +27,11 @@ public class BankTest {
 	}
 	@Test
 	public void rgsTest(){
+		String menuNavBar = "//a[@class='hidden-xs' and @data-toggle='dropdown']";
+		//Перейти по ссылке http://www.rgs.ru
 		driver.get(urlRGSMainPage);
+		//Выбрать Меню
+		driver.findElement(By.xpath(menuNavBar)).click();
 	}
 
 	@After
