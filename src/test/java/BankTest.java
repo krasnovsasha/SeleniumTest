@@ -86,6 +86,8 @@ public class BankTest {
 				"qwertyqwerty",driver.findElement(By.name("Email")).getAttribute("value"));
 		Assert.assertEquals("Поле 'Комментарии' не совпадает",
 				"TestTestTest",driver.findElement(By.name("Comment")).getAttribute("value"));
+		//Нажать Отправить
+		driver.findElement(By.xpath("//div[@class='form-footer']//button[@type='button']")).click();
 	}
 
 	@After
