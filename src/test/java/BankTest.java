@@ -3,7 +3,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
@@ -32,6 +34,9 @@ public class BankTest {
 		driver.get(urlRGSMainPage);
 		//Выбрать Меню
 		driver.findElement(By.xpath(menuNavBar)).click();
+		//Выбрать категорию - ДМС
+		String linkDMS = "//a[contains(text(),'ДМС')]";
+		driver.findElement(By.xpath(linkDMS)).click();
 	}
 
 	@After
