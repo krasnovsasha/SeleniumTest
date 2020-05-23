@@ -42,6 +42,9 @@ public class BankTest {
 		String actualText = driver.findElement(By.xpath(h1)).getText();
 		Assert.assertEquals("Текст заголовка не соответствует ожидаемому",
 				"ДМС — добровольное медицинское страхование",actualText);
+		//Нажать на кнопку - Отправить заявку
+		String buttonToSendRequest = "//a[contains(text(),'Отправить заявку')]";
+		driver.findElement(By.xpath(buttonToSendRequest)).click();
 	}
 
 	@After
