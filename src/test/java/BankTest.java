@@ -75,8 +75,10 @@ public class BankTest {
 				"Иван",driver.findElement(By.name("FirstName")).getAttribute("value"));
 		Assert.assertEquals("Поле 'Отчество' не совпадает",
 				"Иванович",driver.findElement(By.name("MiddleName")).getAttribute("value"));
+		String valueRegion = driver.findElement(By.name("Region")).getAttribute("value");
 		Assert.assertEquals("Поле 'Регион' не совпадает",
-				"77",driver.findElement(By.name("Region")).getAttribute("value"));
+				"Москва",driver.findElement(By.xpath("//select[@name='Region']//following-sibling::option[@value=" + valueRegion + "]"))
+						.getText());
 		String phoneActual = driver.findElement(By.xpath(fieldPhone)).getAttribute("value");
 		// I changing phone numbers below as I follow info from site that has Inputmask: '+7 (999) 999-99-99'
 		String phoneChanged = phoneActual.replaceAll("\\p{Punct}","");
