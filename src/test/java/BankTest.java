@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BankTest {
 	private WebDriver driver;
-	 WebDriverWait wait;
+	private WebDriverWait wait;
 	//use this driver for Linux System
 	private final String pathToChromeDriverLinux = "drivers/chromedriver";
 	//use this driver for Windows System
